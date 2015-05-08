@@ -23,9 +23,11 @@ public class DeleteAction implements Action {
 		GuestBookVo vo = dao.selectGuestBookByNo(no);
 		if(vo.getPassword().equals(password)){
 			dao.deleteGuestBook(vo);
-			response.sendRedirect("/guestbook");
+			response.sendRedirect("/guestbook/gb");
 		}else{
 			request.setAttribute("msg", "비밀번호를 확인해주세요.");
+			// no를 Long -> String으로 형변환
+			request.setAttribute("no", no+"");
 			request.getRequestDispatcher("/deleteform.jsp").forward(request, response);
 		}
 

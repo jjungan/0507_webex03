@@ -3,9 +3,7 @@
 <%@page import="com.sds.icto.guestbook.dao.GuestBookDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <% 
-
-GuestBookDao dao = new GuestBookDao();
-List<GuestBookVo> list = dao.selectGuestBook();
+	List<GuestBookVo> list = (List<GuestBookVo>)request.getAttribute("list");
 %>
 <html>
 <head>
@@ -37,7 +35,7 @@ List<GuestBookVo> list = dao.selectGuestBook();
 			<td>[<%=vo.getNo() %>]</td>
 			<td><%=vo.getName() %></td>
 			<td><%=vo.getRegDate() %></td>
-			<td><a href="deleteform.jsp?no=<%=vo.getNo() %>">삭제</a></td>
+			<td><a href="/guestbook/gb?a=deleteform&no=<%=vo.getNo() %>">삭제</a></td>
 		</tr>
 		<tr>
 			<td colspan=4><%=vo.getMessage() %></td>

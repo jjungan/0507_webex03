@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.sds.icto.web.Action;
 import com.sds.icto.web.DeleteAction;
+import com.sds.icto.web.DeleteFormAction;
 import com.sds.icto.web.IndexAction;
 import com.sds.icto.web.InsertAction;
 
@@ -34,9 +35,10 @@ public class GuestBookServlet extends HttpServlet {
 				action = new InsertAction();
 			}else if("delete".equals(a)){
 				action = new DeleteAction();
+			}else if("deleteform".equals(a)){
+				action = new DeleteFormAction();
 			}else{
 				action = new IndexAction();
-				
 			}
 			action.execute(request, response);
 			
